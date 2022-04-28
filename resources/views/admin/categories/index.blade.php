@@ -13,7 +13,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">{{__('Name')}}</th>
-                <th scope="col">{{__('Email')}}</th>
+                <th scope="col">{{__('Code')}}</th>
                 <th scope="col">{{__('Actions')}}</th>
             </tr>
             </thead>
@@ -25,9 +25,9 @@
                     <td>{{$category->code}}</td>
                     <td>
                         <div class="btn-group" role="group">
-                                <a href="{{route('admin.categories.show', $category)}}" class="m-1 btn btn-sm btn-success">Open</a>
+                                <a href="{{route('admin.categories.show', $category)}}" class="m-1 btn btn-sm btn-success">{{__('Open')}}</a>
                                 @can('update', $category)
-                                    <a href="{{route('admin.categories.edit', $category)}}" class="m-1 btn btn-sm btn-warning">Edit</a>
+                                    <a href="{{route('admin.categories.edit', $category)}}" class="m-1 btn btn-sm btn-warning">{{__('Edit')}}</a>
                                 @endcan
                                 @can('delete', $category)
                             <form action="{{ route('admin.categories.destroy', $category) }}" method="POST">
