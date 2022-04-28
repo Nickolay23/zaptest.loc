@@ -9,7 +9,7 @@
                 @error('name')
                     <div class="alert alert-danger pt-1 pb-1">{{$message}}</div>
                 @enderror
-                <input type="text" name="name" class="form-control" id="name">
+                <input type="text" name="name" class="form-control" id="name" value="{{old('name')}}">
             </div>
         </div>
         <div class="row mb-3">
@@ -18,31 +18,19 @@
                 @error('code')
                     <div class="alert alert-danger pt-1 pb-1">{{$message}}</div>
                 @enderror
-                <input type="text" name="code" class="form-control" id="code">
+                <input type="text" name="code" class="form-control" id="code" value="{{old('code')}}">
             </div>
         </div>
         <div class="row mb-3">
             <label for="description" class="col-sm-2 col-form-label">{{__('Description')}}</label>
             <div class="col-sm-10">
-                <textarea name="description" class="form-control" id="description"></textarea>
+                <textarea name="description" class="form-control" id="description"> {{old('description')}}</textarea>
             </div>
         </div>
         <div class="row mb-3">
             <label class="col-sm-2 col-form-label" for="image">{{__('Image')}}</label>
             <div class="col-sm-10">
                 <input type="file" name="image" class="form-control" id="image">
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="name_en" class="col-sm-2 col-form-label">{{__('English name')}}</label>
-            <div class="col-sm-10">
-                <input type="text" name="name_en" class="form-control" id="name_en">
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="description_en" class="col-sm-2 col-form-label">{{__('English_description')}}</label>
-            <div class="col-sm-10">
-                <textarea name="description_en" class="form-control" id="description_en"></textarea>
             </div>
         </div>
         <button type="submit" class="btn btn-primary">{{__('Save')}}</button>
