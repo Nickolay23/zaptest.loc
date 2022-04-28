@@ -19,8 +19,6 @@ class CreateCategoriesTable extends Migration
             $table->string('code');
             $table->text('description')->nullable();
             $table->text('image')->nullable();
-            $table->string('name_en')->nullable();
-            $table->text('description_en')->nullable();
             $table->timestamps();
         });
     }
