@@ -33,6 +33,7 @@ Route::group(['middleware' => 'auth'], function (){
         Route::resource('categories', \App\Http\Controllers\Admin\CategoryController::class);
         Route::resource('products', \App\Http\Controllers\Admin\ProductController::class);
         Route::resource('manufacturers', \App\Http\Controllers\Admin\ManufacturerController::class);
+        Route::resource('carmodels', \App\Http\Controllers\Admin\CarmodelController::class);
     });
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
