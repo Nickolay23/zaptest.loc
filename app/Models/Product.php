@@ -17,10 +17,16 @@ class Product extends Model
         'price',
         'description',
         'image',
+        'sparepart_id',
     ];
 
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function sparepart()
+    {
+        return $this->belongsTo(Sparepart::class);
     }
 }
