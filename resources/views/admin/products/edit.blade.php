@@ -43,6 +43,22 @@
             </div>
         </div>
         <div class="row mb-3">
+            <label for="sparepart_id" class="col-sm-2 col-form-label">{{__('Spare part')}}</label>
+            <div class="col-sm-10">
+                @error('sparepart_id')
+                <div class="alert alert-danger pt-1 pb-1">{{$message}}</div>
+                @enderror
+                <select class="form-select" id="sparepart_id" name="sparepart_id">
+                    @foreach($spareparts as $sparepart)
+                        <option value="{{$sparepart->id}}"
+                                @if($product->sparepart_id == $sparepart->id) selected
+                            @endif
+                        >{{$sparepart->code}}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        <div class="row mb-3">
             <label for="amount" class="col-sm-2 col-form-label">{{__('Amount')}}</label>
             <div class="col-sm-10">
                 @error('amount')

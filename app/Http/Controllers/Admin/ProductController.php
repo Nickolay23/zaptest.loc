@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Sparepart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -32,7 +33,8 @@ class ProductController extends Controller
         $this->authorize('create', Product::class);
 
         $categories = Category::get();
-        return view('admin.products.create', compact('categories'));
+        $spareparts = Sparepart::get();
+        return view('admin.products.create', compact('categories', 'spareparts'));
     }
 
     /**
@@ -77,7 +79,8 @@ class ProductController extends Controller
         $this->authorize('update', $product);
 
         $categories = Category::get();
-        return view('admin.products.edit', compact('product','categories'));
+        $spareparts = Sparepart::get();
+        return view('admin.products.edit', compact('product','categories', 'spareparts'));
     }
 
     /**

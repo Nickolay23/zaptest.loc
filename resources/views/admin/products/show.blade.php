@@ -30,6 +30,10 @@
             <td>{{$product->category->name}}</td>
         </tr>
         <tr>
+            <td>{{__('Spare part')}}</td>
+            <td>{{$product->sparepart->code}}</td>
+        </tr>
+        <tr>
             <td>{{__('Amount')}}</td>
             <td>{{$product->amount}}</td>
         </tr>
