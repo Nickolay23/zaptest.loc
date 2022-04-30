@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+    <h3>{{__('Edit product')}} {{$product->name}}</h3>
+    <div class="mb-4 d-flex justify-content-end">
+        <a href="{{route('admin.products.index')}}" class="btn btn-dark" role="button">{{__('Product list')}}</a>
+    </div>
     <form action="{{route('admin.products.update', $product)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
