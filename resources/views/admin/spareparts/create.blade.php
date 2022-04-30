@@ -1,26 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
-    <h3>{{__('Create category')}}</h3>
+    <h3>{{__('Create spare part card')}}</h3>
     <div class="mb-4 d-flex justify-content-end">
-        <a href="{{route('admin.categories.index')}}" class="btn btn-dark" role="button">{{__('Category list')}}</a>
+        <a href="{{route('admin.spareparts.index')}}" class="btn btn-dark" role="button">{{__('Spare parts list')}}</a>
     </div>
-    <form action="{{route('admin.categories.store')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('admin.spareparts.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row mb-3">
-            <label for="name" class="col-sm-2 col-form-label">{{__('Name')}}</label>
+            <label for="carmodel_id" class="col-sm-2 col-form-label">{{__('Car model')}}</label>
             <div class="col-sm-10">
-                @error('name')
-                    <div class="alert alert-danger pt-1 pb-1">{{$message}}</div>
+                @error('carmodel_id')
+                <div class="alert alert-danger pt-1 pb-1">{{$message}}</div>
                 @enderror
-                <input type="text" name="name" class="form-control" id="name" value="{{old('name')}}">
+                <select class="form-select" id="carmodel_id" name="carmodel_id[]" multiple size="3">
+                    @foreach($carmodels as $carmodel)
+                        <option value="{{$carmodel->id}}">{{$carmodel->name .' '. $carmodel->generation . ' (' . $carmodel->start_year . '-' . $carmodel->finish_year . ')'}}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
         <div class="row mb-3">
             <label for="code" class="col-sm-2 col-form-label">{{__('Code')}}</label>
             <div class="col-sm-10">
                 @error('code')
-                    <div class="alert alert-danger pt-1 pb-1">{{$message}}</div>
+                <div class="alert alert-danger pt-1 pb-1">{{$message}}</div>
                 @enderror
                 <input type="text" name="code" class="form-control" id="code" value="{{old('code')}}">
             </div>

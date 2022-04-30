@@ -2,7 +2,7 @@
 
 @section('content')
     <h3>{{$product->name}}</h3>
-    <div class="float-end">
+    <div class="mb-4 d-flex justify-content-end">
         <a href="{{route('admin.products.index')}}" class="btn btn-dark" role="button">{{__('Product list')}}</a>
     </div>
     <table class="table">

@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+    <h3>{{__('Create product card')}}</h3>
+    <div class="mb-4 d-flex justify-content-end">
+        <a href="{{route('admin.products.index')}}" class="btn btn-dark" role="button">{{__('Product list')}}</a>
+    </div>
     <form action="{{route('admin.products.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row mb-3">
