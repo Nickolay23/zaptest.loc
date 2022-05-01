@@ -59,6 +59,22 @@
             </div>
         </div>
         <div class="row mb-3">
+            <label for="part_manufacturer_id" class="col-sm-2 col-form-label">{{__('Manufacturer')}}</label>
+            <div class="col-sm-10">
+                @error('part_manufacturer_id')
+                <div class="alert alert-danger pt-1 pb-1">{{$message}}</div>
+                @enderror
+                <select class="form-select" id="part_manufacturer_id" name="part_manufacturer_id">
+                    @foreach($partManufacturers as $partManufacturer)
+                        <option value="{{$partManufacturer->id}}"
+                                @if($product->part_manufacturer_id == $partManufacturer->id) selected
+                            @endif
+                        >{{$partManufacturer->part_manufacturer}}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        <div class="row mb-3">
             <label for="amount" class="col-sm-2 col-form-label">{{__('Amount')}}</label>
             <div class="col-sm-10">
                 @error('amount')

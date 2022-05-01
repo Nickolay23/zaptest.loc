@@ -18,6 +18,7 @@ class Product extends Model
         'description',
         'image',
         'sparepart_id',
+        'part_manufacturer_id',
     ];
 
     public function category()
@@ -28,5 +29,10 @@ class Product extends Model
     public function sparepart()
     {
         return $this->belongsTo(Sparepart::class);
+    }
+
+    public function part_manufacturer()
+    {
+        return $this->belongsTo(PartManufacturer::class);
     }
 }
