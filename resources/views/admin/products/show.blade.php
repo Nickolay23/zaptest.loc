@@ -34,6 +34,10 @@
             <td>{{$product->sparepart->code}}</td>
         </tr>
         <tr>
+            <td>{{__('Manufacturer')}}</td>
+            <td>{{$product->part_manufacturer->part_manufacturer}}</td>
+        </tr>
+        <tr>
             <td>{{__('Amount')}}</td>
             <td>{{$product->amount}}</td>
         </tr>

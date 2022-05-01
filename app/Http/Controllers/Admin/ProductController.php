@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Models\Category;
+use App\Models\PartManufacturer;
 use App\Models\Product;
 use App\Models\Sparepart;
 use Illuminate\Http\Request;
@@ -34,7 +35,8 @@ class ProductController extends Controller
 
         $categories = Category::get();
         $spareparts = Sparepart::get();
-        return view('admin.products.create', compact('categories', 'spareparts'));
+        $partManufacturers = PartManufacturer::get();
+        return view('admin.products.create', compact('categories', 'spareparts', 'partManufacturers'));
     }
 
     /**
@@ -80,7 +82,8 @@ class ProductController extends Controller
 
         $categories = Category::get();
         $spareparts = Sparepart::get();
-        return view('admin.products.edit', compact('product','categories', 'spareparts'));
+        $partManufacturers = PartManufacturer::get();
+        return view('admin.products.edit', compact('product','categories', 'spareparts', 'partManufacturers'));
     }
 
     /**
@@ -95,6 +98,8 @@ class ProductController extends Controller
         $this->authorize('update', $product);
 
         $params = $request->all();
+//        dd($params);
+
         unset($params['image']);
         if ($request->has('image')) {
             Storage::delete($product->image);
