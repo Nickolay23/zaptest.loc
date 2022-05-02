@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
@@ -22,6 +23,7 @@ Auth::routes();
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'auth'], function (){
+//    dd('test');
     Route::group([
         'prefix' => 'admin',
         'as' =>'admin.',
@@ -37,5 +39,13 @@ Route::group(['middleware' => 'auth'], function (){
         Route::resource('spareparts', \App\Http\Controllers\Admin\SparepartController::class);
         Route::resource('part_manufacturers', \App\Http\Controllers\Admin\PartmanufacturerController::class);
     });
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::group([
+        'prefix' => 'user',
+        'as' => 'users.',
+    ], function () {
+        Route::get('/', [App\Http\Controllers\User\ProfileController::class, 'index'])->name('home');
+    });
+//    Route::get('/', [App\Http\Controllers\User\ProfileController::class, 'index'])->name('home');
 });
+
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
