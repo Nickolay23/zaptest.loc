@@ -48,4 +48,4 @@ Route::group(['middleware' => 'auth'], function (){
 //    Route::get('/', [App\Http\Controllers\User\ProfileController::class, 'index'])->name('home');
 });
 
-Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('index');
