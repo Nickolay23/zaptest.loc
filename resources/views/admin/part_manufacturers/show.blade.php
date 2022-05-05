@@ -19,7 +19,7 @@
         </tr>
         <tr>
             <td>{{__('Name')}}</td>
-            <td>{{$partManufacturer->manufacturer}}</td>
+            <td>{{$partManufacturer->part_manufacturer}}</td>
         </tr>
         <tr>
             <td>{{__('Description')}}</td>
@@ -28,7 +28,7 @@
         <tr>
             <td>{{__('Image')}}</td>
             <td><img src="{{ Storage::url($partManufacturer->image) }}"
-                     height="240px"></td>
+                     height="120px"></td>
         </tr>
         </tbody>
     </table>
