@@ -51,11 +51,16 @@ class ProductController extends Controller
 
         $params = $request->all();
         unset($params['image']);
+//        if ($request->has('image')) {
+//            $params['image'] = $request->file('image')->store('products');
+//        }
+
+        $product = Product::create($params);
+
         if ($request->has('image')) {
-            $params['image'] = $request->file('image')->store('products');
+            $product->addMedia($request->file('image'))->toMediaCollection('images');
         }
 
-        Product::create($params);
         return redirect()->route('admin.products.index');
     }
 
@@ -103,7 +108,8 @@ class ProductController extends Controller
         unset($params['image']);
         if ($request->has('image')) {
             Storage::delete($product->image);
-            $params['image'] = $request->file('image')->store('products');
+            $product->addMedia($request->file('image'))->toMediaCollection('images');
+//            $params['image'] = $request->file('image')->store('products');
         }
         $product->update($params);
         return redirect()->route('admin.products.index');

@@ -9,22 +9,27 @@
             @endcan
         </div>
         @if($products->count() > 0)
-            <table class="table">
+            <table class="table align-middle">
                 <thead class="table-secondary">
-                <tr>
+                <tr class="text-center">
                     <th scope="col">#</th>
                     <th scope="col">{{__('Name')}}</th>
                     <th scope="col">{{__('Code')}}</th>
+                    <th scope="col">{{__('Image')}}</th>
                     <th scope="col">{{__('Actions')}}</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($products as $product)
                     <tr>
+
                         <th scope="row">{{$loop->iteration}}</th>
                         <td>{{$product->name}}</td>
                         <td>{{$product->sku}}</td>
-                        <td>
+                        <td class="text-center">
+                            <img src="{{$product->getFirstMediaUrl('images', 'thumb')}}" alt="{{$product->name}}" class="rounded">
+                        </td>
+                        <td class="text-center">
                             <div class="btn-group" role="group">
                                 <a href="{{route('admin.products.show', $product)}}" class="m-1 btn btn-sm btn-success">{{__('Open')}}</a>
                                 @can('update', $product)
