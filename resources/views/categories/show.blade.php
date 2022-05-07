@@ -10,8 +10,8 @@
     <div class="container">
         @foreach($products as $product)
             <div class="row">
-                <div class="col-2 col-xl-2">
-                    <img src="{{Storage::url($product->image)}}" class="img-thumbnail" alt="{{$product->name}}" width="100px" height="100px" />
+                <div class="col-1 col-xl-1 text-center">
+                    <img src="{{$product->getFirstMediaUrl('images', 'thumb')}}" class="rounded" alt="{{$product->name}}" height="50px" />
                 </div>
                 <div class="col-4 col-xl-4">
                     {{$product->name}}
@@ -20,7 +20,7 @@
                     {{$product->sku}}
                 </div>
                 <div class="col-1 col-xl-1">
-                    {{$product->price}}
+                    {{$product->price . ' руб.'}}
                 </div>
             </div>
         @endforeach
