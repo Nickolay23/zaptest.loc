@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -10,6 +11,7 @@ class ProfileController extends Controller
 
     public function index()
     {
-        return view('users.index');
+        $categories = Category::get();
+        return view('users.index', compact('categories'));
     }
 }

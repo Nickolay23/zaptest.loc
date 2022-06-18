@@ -49,4 +49,12 @@ Route::group(['middleware' => 'auth'], function (){
 });
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('index');
+Route::group([
+        'prefix' => 'cart',
+    ], function () {
+        Route::get('/', [\App\Http\Controllers\CartController::class, 'index'])->name('cart');
+        Route::post('/add/{product}', [\App\Http\Controllers\CartController::class, 'cartAdd'])->name('cart-add');
+        Route::post('/remove/{product}', [\App\Http\Controllers\CartController::class, 'cartRemove'])->name('cart-remove');
+//        Route::post('/test/', [\App\Http\Controllers\CartController::class, 'test'])->name('cart-test');
+});
 Route::get('/{category}', [\App\Http\Controllers\CategoryController::class, 'category'])->name('category');

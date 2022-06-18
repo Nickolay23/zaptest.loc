@@ -39,6 +39,16 @@ class Product extends Model implements HasMedia
         return $this->belongsTo(PartManufacturer::class);
     }
 
+    public function productCost()
+    {
+        if(!is_null($this->pivot)){
+            return $this->price * $this->pivot->amount;
+        }
+        else{
+            return $this->price;
+        }
+    }
+
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')

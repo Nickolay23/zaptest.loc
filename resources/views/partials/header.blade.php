@@ -88,11 +88,14 @@
                 <button class="btn btn-outline-success" type="submit">Поиск</button>
             </form>
             <div class="col-xl-2">
-                <a href="#" class="text-decoration-none link-dark">
+                <a href="{{route('cart')}}" class="text-decoration-none link-dark">
                     <svg class="bi" width="1.5em" height="1.5em" fill="currentColor">
                         <use xlink:href="bootstrap-icons.svg#cart"/>
                     </svg>
                     {{__('Cart')}}
+                    @if(session()->has('cartItems'))
+                        {{session()->get('cartItems')}}
+                    @endif
                 </a>
             </div>
         </div>
